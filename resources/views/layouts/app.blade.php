@@ -20,6 +20,13 @@
         <div class="main flex flex-wrap justify-end mt-16">
 
             @include('layouts.sidebar')
+            @if(auth()->check())
+            @if(auth()->user()->hasRole('Teacher'))
+                @include('layouts.sidebarTeacher')
+            @elseif(auth()->user()->hasRole('Student'))
+                @include('layouts.sidebarStudent')
+            @endif
+        @endif
             {{-- @include('layouts.sidebarTeacher')
             @include('layouts.sidebarStudent') --}}
 
