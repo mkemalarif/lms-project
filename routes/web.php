@@ -26,7 +26,7 @@ Route::put('/profile/update', 'HomeController@profileUpdate')->name('profile.upd
 Route::get('/profile/changepassword', 'HomeController@changePasswordForm')->name('profile.change.password');
 Route::post('/profile/changepassword', 'HomeController@changePassword')->name('profile.changepassword');
 
-Route::group(['middleware' => ['auth','role:Admin']], function () 
+Route::group(['middleware' => ['auth','role:Admin']], function ()
 {
     Route::get('/roles-permissions', 'RolePermissionController@roles')->name('roles-permissions');
     Route::get('/role-create', 'RolePermissionController@createRole')->name('role.create');
@@ -52,13 +52,13 @@ Route::group(['middleware' => ['auth','role:Admin']], function ()
 
 });
 
-Route::group(['middleware' => ['auth','role:Teacher']], function () 
+Route::group(['middleware' => ['auth','role:Teacher']], function ()
 {
     Route::post('attendance', 'AttendanceController@store')->name('teacher.attendance.store');
     Route::get('attendance-create/{classid}', 'AttendanceController@createByTeacher')->name('teacher.attendance.create');
 });
 
-Route::group(['middleware' => ['auth','role:Parent']], function () 
+Route::group(['middleware' => ['auth','role:Parent']], function ()
 {
     Route::get('attendance/{attendance}', 'AttendanceController@show')->name('attendance.show');
 });
