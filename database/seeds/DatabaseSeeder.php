@@ -19,16 +19,18 @@ class DatabaseSeeder extends Seeder
 
         $user = User::create([
             'name'          => 'Admin',
+            'username'      => 'admin',
             'email'         => 'admin@mail.com',
-            'password'      => bcrypt('codeastro.com'),
+            'password'      => bcrypt('admin'),
             'created_at'    => date("Y-m-d H:i:s")
         ]);
         $user->assignRole('Admin');
 
         $user2 = User::create([
             'name'          => 'Teacher',
+            'username'      => 'teacher',
             'email'         => 'teacher@mail.com',
-            'password'      => bcrypt('codeastro.com'),
+            'password'      => bcrypt('teacher'),
             'created_at'    => date("Y-m-d H:i:s")
         ]);
         $user2->assignRole('Teacher');
@@ -36,15 +38,17 @@ class DatabaseSeeder extends Seeder
         $user3 = User::create([
             'name'          => 'Parent',
             'email'         => 'parent@mail.com',
-            'password'      => bcrypt('codeastro.com'),
+            'username'      => 'parent',
+            'password'      => bcrypt('parent'),
             'created_at'    => date("Y-m-d H:i:s")
         ]);
         $user3->assignRole('Parent');
 
         $user4 = User::create([
             'name'          => 'Student',
+            'username'      => 'student',
             'email'         => 'student@mail.com',
-            'password'      => bcrypt('codeastro.com'),
+            'password'      => bcrypt('student'),
             'created_at'    => date("Y-m-d H:i:s")
         ]);
         $user4->assignRole('Student');

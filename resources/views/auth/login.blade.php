@@ -9,7 +9,7 @@
             <label class="block text-gray-700 text-sm font-bold mb-2" for="emailaddress">
                 Email Address
             </label>
-            <input class="shadow appearance-none border @error('password') border-red-500 @enderror rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" type="email" name="email" id="emailaddress" placeholder="email@example.com">
+            <input class="shadow appearance-none border @error('password') border-red-500 @enderror rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" type="text" name="username" id="username" placeholder="username">
             @error('email')
                 <p class="text-red-500 text-xs italic">{{ $message }}</p>
             @enderror
