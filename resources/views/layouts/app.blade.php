@@ -20,8 +20,8 @@
         <div class="main flex flex-wrap justify-end mt-16">
 
             @include('layouts.sidebar')
-            @include('layouts.sidebarTeacher')
-            @include('layouts.sidebarStudent')
+            {{-- @include('layouts.sidebarTeacher')
+            @include('layouts.sidebarStudent') --}}
 
             <div class="content w-full sm:w-5/6">
                 <div class="container mx-auto p-4 sm:p-6">
