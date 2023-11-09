@@ -2,8 +2,8 @@
 
 namespace Illuminate\Support\Facades;
 
-use Laravel\Ui\UiServiceProvider;
 use RuntimeException;
+use Laravel\Ui\UiServiceProvider;
 
 /**
  * @method static \Illuminate\Auth\AuthManager extend(string $driver, \Closure $callback)
