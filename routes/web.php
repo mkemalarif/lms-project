@@ -66,3 +66,7 @@ Route::group(['middleware' => ['auth','role:Parent']], function ()
 Route::group(['middleware' => ['auth','role:Student']], function () {
 
 });
+
+Route::group(['middleware' => ['auth', 'role:Teacher|Admin|Student']], function (){
+    Route::get('/course', 'CourseController@index');
+});
