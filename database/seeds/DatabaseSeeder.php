@@ -1,10 +1,13 @@
 <?php
 
 use App\User;
+use App\Teacher;
 use Illuminate\Database\Seeder;
+use Faker\Generator as Faker;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use App\Student;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,7 +18,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(RolesAndPermissionsSeeder::class);
+        $this->call([
+            RolesAndPermissionsSeeder::class,
+        ]);
+        // $this->call(CourseSeeder::class);
+        // $this->call(Teacher::class);
+        // $this->call(Student::class);
+        $users = factory(App\User::class,7)->create()->each(function($user){
+            $user->assignRole('Teacher');
+        });
+        $teachers = factory(App\Teacher::class,7)->create();
+
+        $class = factory(App\Grade::class,7)->create();
+        $parent = factory(App\Parents::class,7)->create();
+        $student = factory(App\Student::class,30)->create();
+
+        // $users2 = factory(App\User::class,10)->create()->each(function($user){
+        //     $user->assignRole('Student');
+        // });
 
         $user = User::create([
             'name'          => 'Admin',
@@ -25,15 +45,6 @@ class DatabaseSeeder extends Seeder
             'created_at'    => date("Y-m-d H:i:s")
         ]);
         $user->assignRole('Admin');
-
-        $user2 = User::create([
-            'name'          => 'Teacher',
-            'username'      => 'teacher',
-            'email'         => 'teacher@mail.com',
-            'password'      => bcrypt('teacher'),
-            'created_at'    => date("Y-m-d H:i:s")
-        ]);
-        $user2->assignRole('Teacher');
 
         $user3 = User::create([
             'name'          => 'Parent',
@@ -52,19 +63,6 @@ class DatabaseSeeder extends Seeder
             'created_at'    => date("Y-m-d H:i:s")
         ]);
         $user4->assignRole('Student');
-
-
-        DB::table('teachers')->insert([
-            [
-                'user_id'           => $user2->id,
-                'gender'            => 'male',
-                'phone'             => '6969540014',
-                'dateofbirth'       => '1990-04-11',
-                'current_address'   => '63 Walnut Hill Drive',
-                'permanent_address' => '385 Emma Street',
-                'created_at'        => date("Y-m-d H:i:s")
-            ]
-        ]);
 
         DB::table('parents')->insert([
             [
@@ -88,8 +86,8 @@ class DatabaseSeeder extends Seeder
             [
                 'user_id'           => $user4->id,
                 'parent_id'         => 1,
-                'class_id'          => 1,
                 'roll_number'       => 1,
+                "class_id"          => 1,
                 'gender'            => 'male',
                 'phone'             => '7801256654',
                 'dateofbirth'       => '2007-04-11',
