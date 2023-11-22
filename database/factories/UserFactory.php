@@ -14,3 +14,9 @@ $factory->define(User::class, function (Faker $faker) {
         "created_at" => date("d-m-Y"),
     ];
 });
+// $factory->state(App\User::class, 'teacher', [
+//     // Definisi atribut-atribut tambahan jika diperlukan.
+// ]);
+$factory->state(App\User::class, 'parent', [
+    // Definisi atribut-atribut tambahan jika diperlukan.
+]);

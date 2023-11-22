@@ -24,14 +24,20 @@ class DatabaseSeeder extends Seeder
         // $this->call(CourseSeeder::class);
         // $this->call(Teacher::class);
         // $this->call(Student::class);
-        $users = factory(App\User::class,7)->create()->each(function($user){
-            $user->assignRole('Teacher');
-        });
-        $teachers = factory(App\Teacher::class,7)->create();
+        // $users = factory(App\User::class,7)->create()->each(function($user){
+        //     $user->assignRole('Teacher');
+        // });
+        // $teachers = factory(App\Teacher::class,7)->create()->each(function($user){
+        //     $user->assignRole('Teacher');
+        //     $user->update([
+        //         "username" => "teacher" . $user->id,
+        //     ]);
+        // });
+        $teachers = factory(App\Teacher::class,7)->state('withRole')->create();
 
         $class = factory(App\Grade::class,7)->create();
-        $parent = factory(App\Parents::class,7)->create();
-        $student = factory(App\Student::class,30)->create();
+        // $parent = factory(App\Parents::class,7)->create();
+        $student = factory(App\Student::class,30)->state('withRole')->create();
 
         // $users2 = factory(App\User::class,10)->create()->each(function($user){
         //     $user->assignRole('Student');
