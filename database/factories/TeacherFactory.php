@@ -23,7 +23,6 @@ $factory->define(Teacher::class, function (Faker $faker) {
 });
 $factory->state(App\Teacher::class, 'withRole', [
 ])->afterCreatingState(App\Teacher::class, 'withRole', function ($teacher, $faker) {
-    // Setelah objek Teacher dibuat, tambahkan role 'Teacher'.
     $teacher->user->update([
         "username" => "teacher" . $teacher->id,
     ]);

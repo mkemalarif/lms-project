@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
         // });
         $teachers = factory(App\Teacher::class,7)->state('withRole')->create();
 
-        $class = factory(App\Grade::class,7)->create();
+        $class = factory(App\Grade::class,11)->create();
         // $parent = factory(App\Parents::class,7)->create();
         $student = factory(App\Student::class,30)->state('withRole')->create();
 
